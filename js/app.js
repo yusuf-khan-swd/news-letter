@@ -1,9 +1,14 @@
 
 const loadCategories = async () => {
-  const url = `https://openapi.programming-hero.com/api/news/categories`;
-  const res = await fetch(url);
-  const data = await res.json();
-  displayCategories(data.data.news_category);
+  try {
+    const url = `https://openapi.programming-hero.com/api/news/categories`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayCategories(data.data.news_category);
+  }
+  catch (err) {
+    console.log(err)
+  }
 };
 
 const displayCategories = categories => {
@@ -13,11 +18,31 @@ const displayCategories = categories => {
     const categoryList = document.createElement('li');
     categoryList.classList.add('nav-item');
     categoryList.innerHTML = `
-    <a class="nav-link" href="#">${category.category_name}</a>
+    <a onclick="loadClickedCategoryNews('${category.category_id}')" class="nav-link" href="#">${category.category_name}</a>
     `;
 
     categoryContainer.appendChild(categoryList);
   });
 };
+
+const loadClickedCategoryNews = async categoryId => {
+  try {
+    const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayClickedCategoryNews(data.data);
+  }
+  catch (err) {
+    console.log(err);
+  }
+
+};
+
+const displayClickedCategoryNews = categoryItems => {
+
+  categoryItems.forEach(categoryItem => {
+    console.log(categoryItem);
+  });
+}
 
 loadCategories();
