@@ -29,6 +29,8 @@ const displayCategories = categories => {
 const toggler = isLoading => {
   const spinnerContainer = document.getElementById('spinner-container');
   if (isLoading) {
+    const newsContainer = document.getElementById('news-container');
+    newsContainer.textContent = '';
     spinnerContainer.classList.remove('d-none');
   }
   else {
