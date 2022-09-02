@@ -104,7 +104,7 @@ const displayClickedCategoryNews = categoryItems => {
             </div>
             <div><i class="fa-solid fa-eye me-3"></i> ${total_view ? total_view : 'not found'}</div>
             <div>${number}</div>
-            <div onclick="loadNewsDetails('${categoryItem._id}')"><i class="fa-solid fa-arrow-right btn"></i></div>
+            <div onclick="loadNewsDetails('${categoryItem._id}')"><i class="fa-solid fa-arrow-right btn" data-bs-toggle="modal" data-bs-target="#newsDetailsModal"></i></div>
           </div>
         </div>
       </div>
