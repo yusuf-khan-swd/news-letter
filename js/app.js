@@ -78,9 +78,8 @@ const displayClickedCategoryNews = categoryItems => {
   newsContainer.textContent = '';
 
   categoryItems.forEach(categoryItem => {
-    const { total_view, title, thumbnail_url, details } = categoryItem;
-    const { name, img, published_date } = categoryItem.author;
-    const { number } = categoryItem.rating;
+    const { total_view, title, thumbnail_url, details, author, rating } = categoryItem;
+    const { name, img, published_date } = author;
 
     const newsDiv = document.createElement('div');
     newsDiv.classList.add('col');
@@ -103,8 +102,8 @@ const displayClickedCategoryNews = categoryItems => {
               </div>
             </div>
             <div><i class="fa-solid fa-eye me-3"></i> ${total_view ? total_view : 'not found'}</div>
-            <div>${number}</div>
-            <div onclick="loadNewsDetails('${categoryItem._id}')"><i class="fa-solid fa-arrow-right btn" data-bs-toggle="modal" data-bs-target="#newsDetailsModal"></i></div>
+            <div onclick="loadNewsDetails('${categoryItem._id}')"><i class="fa-solid fa-arrow-right btn"
+             data-bs-toggle="modal" data-bs-target="#newsDetailsModal"></i></div>
           </div>
         </div>
       </div>
@@ -125,7 +124,35 @@ const loadNewsDetails = async itemId => {
 }
 
 const displayNewsDetails = newsItem => {
-  console.log(newsItem);
+  const { total_view, title, thumbnail_url, details, author, rating } = newsItem;
+  const { name, img, published_date } = author;
+  const { number } = rating;
+
+  const newsDetailsBody = document.getElementById('news-details-body');
+  newsDetailsBody.innerHTML = `
+  <div class="card mb-3 p-3">
+    <div class="row g-0">
+      <div class="col-md-3">
+        <img src="${thumbnail_url}" class="img-fluid rounded-start" alt="..." />
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h5 class="card-title">${title ? title : 'not found'}</h5>
+          <p class="card-text text-muted">${details}</p>
+          <div class="d-flex justify-content-between">
+            <div class="card-text d-flex">
+              <img class="rounded-circle" src="${img ? img : 'not available'}" style="width:40px; height:40px" alt="">
+              <div class="ms-3">
+                <p class="mb-0">${name ? name : 'not found'}</p>
+                <p class="text-muted">${published_date ? published_date : 'not found'}</p>
+              </div>
+            </div>
+            <div><i class="fa-solid fa-eye me-3"></i> ${total_view ? total_view : 'not found'}</div>
+            <div>${number}</div>
+        </div>
+      </div>
+    </div>
+  </div>`;
 }
 
 loadCategories();
