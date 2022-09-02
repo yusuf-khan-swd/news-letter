@@ -36,7 +36,7 @@ const toggler = isLoading => {
   }
 };
 
-const activeNewsCategory = () => {
+const removePreviouslyActiveNewsCategory = () => {
   const classList = document.getElementsByClassName('active')
   for (let i = 0; i < classList.length + 1; i++) {
     if (classList[i]) {
@@ -44,12 +44,14 @@ const activeNewsCategory = () => {
       classList[i].classList.remove('active');
     }
   }
-}
+};
+
+
 
 const loadClickedCategoryNews = async categoryId => {
   toggler(true);
 
-  activeNewsCategory();
+  removePreviouslyActiveNewsCategory();
   const clickCategory = document.getElementsByClassName(`${categoryId}`)[0];
   clickCategory.classList.add('text-primary');
   clickCategory.classList.add('active');
