@@ -133,10 +133,10 @@ const displayNewsDetails = newsItem => {
   newsDetailsBody.innerHTML = `
   <div class="card mb-3 p-3">
     <div class="row g-0">
-      <div class="col-md-3">
+      <div class="col-12 text-center">
         <img src="${thumbnail_url}" class="img-fluid rounded-start" alt="..." />
       </div>
-      <div class="col-md-9">
+      <div class="col-12">
         <div class="card-body">
           <h5 class="card-title">${title ? title : 'not found'}</h5>
           <p class="card-text text-muted">${details}</p>
