@@ -36,7 +36,7 @@ const toggler = isLoading => {
   }
 };
 
-const removePreviouslyActiveNewsCategory = () => {
+const removePreviouslyActiveNewsCategoryStyle = () => {
   const classList = document.getElementsByClassName('active')
   for (let i = 0; i < classList.length + 1; i++) {
     if (classList[i]) {
@@ -46,15 +46,17 @@ const removePreviouslyActiveNewsCategory = () => {
   }
 };
 
-
-
-const loadClickedCategoryNews = async categoryId => {
-  toggler(true);
-
-  removePreviouslyActiveNewsCategory();
+const addActiveNewsCategoryStyle = categoryId => {
   const clickCategory = document.getElementsByClassName(`${categoryId}`)[0];
   clickCategory.classList.add('text-primary');
   clickCategory.classList.add('active');
+}
+
+const loadClickedCategoryNews = async categoryId => {
+  toggler(true);
+  removePreviouslyActiveNewsCategoryStyle();
+  addActiveNewsCategoryStyle(categoryId);
+
   try {
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
     const res = await fetch(url);
