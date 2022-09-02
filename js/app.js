@@ -77,7 +77,8 @@ const displayClickedCategoryNews = categoryItems => {
   newsContainer.textContent = '';
 
   categoryItems.forEach(categoryItem => {
-    console.log(categoryItem.details.split(' ').slice(0, 40).join(' ') + '...');
+    console.log(categoryItem.author)
+    const { name, img, published_date } = categoryItem.author
 
     const newsDiv = document.createElement('div');
     newsDiv.classList.add('col');
@@ -90,10 +91,14 @@ const displayClickedCategoryNews = categoryItems => {
       <div class="col-md-9">
         <div class="card-body">
           <h5 class="card-title">${categoryItem.title}</h5>
-          <p class="card-text">${categoryItem.details.split(' ').slice(0, 40).join(' ') + '...'}</p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          <p class="card-text text-muted">${categoryItem.details.split(' ').slice(0, 40).join(' ') + '...'}</p>
+          <div class="card-text d-flex">
+            <img class="rounded-circle" src="${img ? img : 'not available'}" style="width:40px; height:40px" alt="">
+            <div class="ms-3">
+              <p class="mb-0">${name ? name : 'not found'}</p>
+              <p class="text-muted">${published_date ? published_date : 'not found'}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
