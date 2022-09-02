@@ -26,9 +26,19 @@ const displayCategories = categories => {
   });
 };
 
-
+const toggler = isLoading => {
+  const spinnerContainer = document.getElementById('spinner-container');
+  if (isLoading) {
+    spinnerContainer.classList.remove('d-none');
+  }
+  else {
+    spinnerContainer.classList.add('d-none');
+  }
+};
 
 const loadClickedCategoryNews = async categoryId => {
+  toggler(true);
+
   const classList = document.getElementsByClassName('active')
   for (let i = 0; i < classList.length + 1; i++) {
     if (classList[i]) {
