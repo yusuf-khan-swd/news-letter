@@ -18,7 +18,8 @@ const displayCategories = categories => {
     const categoryList = document.createElement('li');
     categoryList.classList.add('nav-item');
     categoryList.innerHTML = `
-    <a onclick="loadClickedCategoryNews('${category.category_id}')" class="nav-link ${category.category_id}" href="#">${category.category_name}</a>
+    <a onclick="loadClickedCategoryNews('${category.category_id}')"
+     class="nav-link ${category.category_id}" href="#">${category.category_name}</a>
     `;
 
     categoryContainer.appendChild(categoryList);
@@ -51,7 +52,7 @@ const loadClickedCategoryNews = async categoryId => {
 };
 
 const displayClickedCategoryNews = categoryItems => {
-  console.log(categoryItems.length !== 0 ? categoryItems : 'not found')
+  console.log(categoryItems.length !== 0 ? categoryItems.length : 'not found')
 
   categoryItems.forEach(categoryItem => {
     console.log(categoryItem);
