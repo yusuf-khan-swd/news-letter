@@ -77,7 +77,6 @@ const displayClickedCategoryNews = categoryItems => {
   newsContainer.textContent = '';
 
   categoryItems.forEach(categoryItem => {
-    console.log(categoryItem._id);
     const { total_view, title, thumbnail_url, details } = categoryItem;
     const { name, img, published_date } = categoryItem.author;
     const { number } = categoryItem.rating;
@@ -117,6 +116,15 @@ const displayClickedCategoryNews = categoryItems => {
   toggler(false);
 };
 
+const loadNewsDetails = async itemId => {
+  const url = `https://openapi.programming-hero.com/api/news/${itemId}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  displayNewsDetails(data.data[0]);
+}
 
+const displayNewsDetails = newsItem => {
+  console.log(newsItem);
+}
 
 loadCategories();
