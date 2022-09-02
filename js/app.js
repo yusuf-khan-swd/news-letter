@@ -80,6 +80,7 @@ const displayClickedCategoryNews = categoryItems => {
   categoryItems.forEach(categoryItem => {
     const { total_view, title, thumbnail_url, details, author, rating } = categoryItem;
     const { name, img, published_date } = author;
+    const { number } = rating;
 
     const newsDiv = document.createElement('div');
     newsDiv.classList.add('col');
@@ -102,6 +103,7 @@ const displayClickedCategoryNews = categoryItems => {
               </div>
             </div>
             <div><i class="fa-solid fa-eye me-3"></i> ${total_view ? total_view : 'not found'}</div>
+            <div>${number}</div>
             <div onclick="loadNewsDetails('${categoryItem._id}')"><i class="fa-solid fa-arrow-right btn"
              data-bs-toggle="modal" data-bs-target="#newsDetailsModal"></i></div>
           </div>
@@ -126,7 +128,6 @@ const loadNewsDetails = async itemId => {
 const displayNewsDetails = newsItem => {
   const { total_view, title, thumbnail_url, details, author, rating } = newsItem;
   const { name, img, published_date } = author;
-  const { number } = rating;
 
   const newsDetailsBody = document.getElementById('news-details-body');
   newsDetailsBody.innerHTML = `
@@ -148,7 +149,6 @@ const displayNewsDetails = newsItem => {
               </div>
             </div>
             <div><i class="fa-solid fa-eye me-3"></i> ${total_view ? total_view : 'not found'}</div>
-            <div>${number}</div>
         </div>
       </div>
     </div>
