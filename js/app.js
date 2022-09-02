@@ -75,7 +75,7 @@ const displayClickedCategoryNews = categoryItems => {
   newsContainer.textContent = '';
 
   categoryItems.forEach(categoryItem => {
-    console.log(categoryItem);
+    console.log(categoryItem.details.split(' ').slice(0, 40).join(' ') + '...');
 
     const newsDiv = document.createElement('div');
     newsDiv.classList.add('col');
@@ -88,11 +88,7 @@ const displayClickedCategoryNews = categoryItems => {
       <div class="col-md-9">
         <div class="card-body">
           <h5 class="card-title">${categoryItem.title}</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a
-            natural lead-in to additional content. This content is a
-            little bit longer.
-          </p>
+          <p class="card-text">${categoryItem.details.split(' ').slice(0, 40).join(' ') + '...'}</p>
           <p class="card-text">
             <small class="text-muted">Last updated 3 mins ago</small>
           </p>
