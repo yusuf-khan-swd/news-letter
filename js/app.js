@@ -12,6 +12,7 @@ const loadClickedCategoryNews = async (categoryId, categoryName) => {
   }
   catch (err) {
     console.log(err);
+    toggler(false);
   }
 };
 
@@ -109,5 +110,3 @@ const displayNewsDetails = newsItem => {
     </div>
   </div>`;
 }
-
-loadCategories();

@@ -25,3 +25,5 @@ const displayCategories = categories => {
     categoryContainer.appendChild(categoryList);
   });
 };
+
+loadCategories();
