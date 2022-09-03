@@ -16,7 +16,7 @@
       }
     </style>
   </head>
-  <body>
+  <body class="bg-light">
     <header></header>
     <main class="container my-5">
       <section class="accordion-container">
@@ -123,15 +123,50 @@
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is
-                hidden by default, until the collapse plugin adds the
-                appropriate classes that we use to style each element. These
-                classes control the overall appearance, as well as the showing
-                and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
+                <strong>Regular Function</strong>
+                <ul>
+                  <li>
+                    Regular function declare with keyword <code>function</code>
+                  </li>
+                  <li>Regular function can be function expression. like :</li>
+                  <code>let myFunc = function() {}</code>
+                  <li>
+                    Regular function can be named or anonymous function. like:
+                  </li>
+                  <code>
+                    let myFunc = function(input) { return input + 2 };
+                  </code>
+                  <code>
+                    let myFunc2 = named function(input1, input2) { return input1
+                    + input2 }
+                  </code>
+                  <code>myFunc3 function(a, b) { return a + b }</code>
+                </ul>
+                <strong>Arrow Function</strong>
+                <ul>
+                  <li>Arrow function declare with fat arrow <code>=></code></li>
+                  <li>
+                    Arrow function does not have <code>function</code> keyword
+                  </li>
+                  <li>
+                    Its look like this :
+                    <code>let show = input => input + 20</code>
+                  </li>
+                  Its example of one parameter input.
+                  <li>
+                    In case of no parameter input we have to use parenthesis.
+                    <code>let show = () => 90 + 20</code>
+                  </li>
+                  <li>
+                    If we have multiple input and our code can be multiline we
+                    have use curly bracket and explicitly return value if we
+                    needed.
+                    <code>
+                      let sumOf = (input1, input2) => { let sum1 = input1 + 5;
+                      let sum2 = input2 + 10; return (sum1 + sum2) % 2 === 0}
+                    </code>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
