@@ -81,6 +81,7 @@ const displayClickedCategoryNews = categoryItems => {
     const { total_view, title, thumbnail_url, details, author, rating } = categoryItem;
     const { name, img, published_date } = author;
     const { number } = rating;
+    const shortDetails = details.split(' ').slice(0, 40).join(' ') + '...';
 
     const newsDiv = document.createElement('div');
     newsDiv.classList.add('col');
@@ -93,7 +94,7 @@ const displayClickedCategoryNews = categoryItems => {
       <div class="col-md-9">
         <div class="card-body">
           <h5 class="card-title">${title ? title : 'not found'}</h5>
-          <p class="card-text text-muted">${details.split(' ').slice(0, 40).join(' ') + '...'}</p>
+          <p class="card-text text-muted">${shortDetails}</p>
           <div class="d-flex justify-content-between">
             <div class="card-text d-flex">
               <img class="rounded-circle" src="${img ? img : 'not available'}" style="width:40px; height:40px" alt="">
