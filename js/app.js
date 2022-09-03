@@ -31,7 +31,7 @@ const displayClickedCategoryNews = (categoryItems, categoryName) => {
       const { total_view, title, thumbnail_url, details, author, rating } = categoryItem;
       const { name, img, published_date } = author;
       const { number } = rating;
-      const shortDetails = details.split(' ').slice(0, 40).join(' ') + '...';
+      const shortDetails = details.split(' ').slice(0, 80).join(' ') + '...';
 
       const newsDiv = document.createElement('div');
       newsDiv.classList.add('col');
@@ -42,23 +42,31 @@ const displayClickedCategoryNews = (categoryItems, categoryName) => {
         <img src="${thumbnail_url}" class="img-fluid rounded-start" alt="..." />
       </div>
       <div class="col-md-9">
-        <div class="card-body">
-          <h5 class="card-title">${title ? title : 'not found'}</h5>
-          <p class="card-text text-muted">${shortDetails}</p>
-          <div class="d-flex justify-content-between">
-            <div class="card-text d-flex">
-              <img class="rounded-circle" src="${img ? img : 'not available'}" style="width:40px; height:40px" alt="">
-              <div class="ms-3">
-                <p class="mb-0">${name ? name : 'not found'}</p>
-                <p class="text-muted">${published_date ? published_date : 'not found'}</p>
+        <div class="card border-0 h-100">
+          <div class="card-body">
+            <h5 class="card-title">${title ? title : 'not found'}</h5>
+            <p class="card-text text-muted">${shortDetails}</p>
+          </div>
+          <div class="row m-3">
+            <div class="d-flex mb-3 m-auto col-12 col-lg-4">
+              <div class="me-3">
+                <img style="width: 40px; height: 40px" src="${img ? img : 'not found'}" class="img-fluid rounded-circle" alt="..." />
+              </div>
+              <div>
+                <div>${name ? name : 'not found'}</div>
+                <div>${published_date ? published_date : 'not found'}</div>
               </div>
             </div>
-            <div><i class="fa-solid fa-eye me-3"></i> ${total_view ? total_view : 'not found'}</div>
-            <div>${number}</div>
-            <div onclick="loadNewsDetails('${categoryItem._id}')"><i class="fa-solid fa-arrow-right btn"
-             data-bs-toggle="modal" data-bs-target="#newsDetailsModal"></i></div>
+            <div class="col-4 col-lg-2 m-auto">
+              <i class="fa-solid fa-eye"></i> ${total_view ? total_view : 'not found'}
+            </div>
+            <div class="col-4 col-lg-2 m-auto">${number ? number : 'not found'}</div>
+            <div class="col-4 col-lg-2 m-auto">
+              <i onclick="loadNewsDetails('${categoryItem._id ? categoryItem._id : ''}')" 
+              class="fa-solid fa-arrow-right btn" data-bs-toggle="modal" data-bs-target="#newsDetailsModal"></i>
+            </div>
           </div>
-        </div>
+      </div>
       </div>
     </div>
   </div>`;
