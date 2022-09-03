@@ -123,10 +123,15 @@ const displayClickedCategoryNews = categoryItems => {
 };
 
 const loadNewsDetails = async itemId => {
-  const url = `https://openapi.programming-hero.com/api/news/${itemId}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  displayNewsDetails(data.data[0]);
+  try {
+    const url = `https://openapi.programming-hero.com/api/news/${itemId}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayNewsDetails(data.data[0]);
+  }
+  catch (err) {
+    console.log(err);
+  }
 }
 
 const displayNewsDetails = newsItem => {
