@@ -77,15 +77,18 @@ const displayClickedCategoryNews = categoryItems => {
   const newsContainer = document.getElementById('news-container');
   newsContainer.textContent = '';
 
-  categoryItems.forEach(categoryItem => {
-    const { total_view, title, thumbnail_url, details, author, rating } = categoryItem;
-    const { name, img, published_date } = author;
-    const { number } = rating;
-    const shortDetails = details.split(' ').slice(0, 40).join(' ') + '...';
+  categoryItems
+    .sort((a, b) => a.total_view - b.total_view)
+    .reverse()
+    .forEach(categoryItem => {
+      const { total_view, title, thumbnail_url, details, author, rating } = categoryItem;
+      const { name, img, published_date } = author;
+      const { number } = rating;
+      const shortDetails = details.split(' ').slice(0, 40).join(' ') + '...';
 
-    const newsDiv = document.createElement('div');
-    newsDiv.classList.add('col');
-    newsDiv.innerHTML = `
+      const newsDiv = document.createElement('div');
+      newsDiv.classList.add('col');
+      newsDiv.innerHTML = `
     <div class="card mb-3 shadow p-3">
     <div class="row g-0">
       <div class="col-md-3">
@@ -113,8 +116,8 @@ const displayClickedCategoryNews = categoryItems => {
     </div>
   </div>`;
 
-    newsContainer.appendChild(newsDiv);
-  });
+      newsContainer.appendChild(newsDiv);
+    });
 
   toggler(false);
 };
