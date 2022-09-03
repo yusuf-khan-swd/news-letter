@@ -1,10 +1,4 @@
 
-const addActiveNewsCategoryStyle = categoryId => {
-  const clickCategory = document.getElementsByClassName(`${categoryId}`)[0];
-  clickCategory.classList.add('text-primary');
-  clickCategory.classList.add('active');
-}
-
 const loadClickedCategoryNews = async categoryId => {
   toggler(true);
   removePreviouslyActiveNewsCategoryStyle();

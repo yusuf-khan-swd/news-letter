@@ -20,3 +20,9 @@ const removePreviouslyActiveNewsCategoryStyle = () => {
     }
   }
 };
+
+const addActiveNewsCategoryStyle = categoryId => {
+  const clickCategory = document.getElementsByClassName(`${categoryId}`)[0];
+  clickCategory.classList.add('text-primary');
+  clickCategory.classList.add('active');
+}
