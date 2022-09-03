@@ -1,5 +1,5 @@
 
-const loadClickedCategoryNews = async categoryId => {
+const loadClickedCategoryNews = async (categoryId, categoryName) => {
   toggler(true);
   removePreviouslyActiveNewsCategoryStyle();
   addActiveNewsCategoryStyle(categoryId);
@@ -8,16 +8,17 @@ const loadClickedCategoryNews = async categoryId => {
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
     const res = await fetch(url);
     const data = await res.json();
-    displayClickedCategoryNews(data.data);
+    displayClickedCategoryNews(data.data, categoryName);
   }
   catch (err) {
     console.log(err);
   }
 };
 
-const displayClickedCategoryNews = categoryItems => {
+const displayClickedCategoryNews = (categoryItems, categoryName) => {
+  const totalFoundMessage = `${categoryItems.length !== 0 ? categoryItems.length + ' news found' : ' no news found'}`;
   const totalNewsFound = document.getElementById('total-news-found');
-  totalNewsFound.innerText = `${categoryItems.length !== 0 ? categoryItems.length + ' news found' : ' no news found'}`;
+  totalNewsFound.innerText = `${totalFoundMessage} in ${categoryName} category`;
 
   const newsContainer = document.getElementById('news-container');
   newsContainer.textContent = '';

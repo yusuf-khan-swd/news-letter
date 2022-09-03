@@ -18,7 +18,7 @@ const displayCategories = categories => {
     const categoryList = document.createElement('li');
     categoryList.classList.add('nav-item');
     categoryList.innerHTML = `
-    <a onclick="loadClickedCategoryNews('${category.category_id}')"
+    <a onclick="loadClickedCategoryNews('${category.category_id}', '${category.category_name}')"
      class="nav-link ${category.category_id}" href="#">${category.category_name}</a>
     `;
 
